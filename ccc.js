@@ -12,15 +12,18 @@ const cccSchema = mongoose.Schema(
     isChoose: {
       type: Boolean,
     },
+    class: {
+      type: String,
+    },
+    room: {
+      type: String,
+    },
     date: {
       type: Date,
       default: Date.now,
     },
-    score: {
-      type: Number,
-    },
-    isMetro: {
-      type: Boolean,
+    stdType: {
+      type: String,
     },
   },
   {

@@ -19,8 +19,8 @@ const metroSchema = mongoose.Schema(
     score: {
       type: Number,
     },
-    isMetro: {
-      type: Boolean,
+    stdType: {
+      type: String,
     },
   },
   {

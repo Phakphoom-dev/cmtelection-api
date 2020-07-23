@@ -36,9 +36,13 @@ app.get("/", (req, res) => {
 const Score = require("./electionrouter");
 const Metro = require("./metrorouter");
 const CCC = require("./cccrouter.js");
+const Std = require("./stdrouter");
+const Party = require("./partyrouter.js");
 app.use("/api/score", Score);
 app.use("/api/metro", Metro);
 app.use("/api/ccc", CCC);
+app.use("/api/std", Std);
+app.use("/api/party", Party);
 
 app.use((req, res, next) => {
   const err = new Error("ไม่พบ path ที่คุณต้องการ");

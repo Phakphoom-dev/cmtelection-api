@@ -12,8 +12,8 @@ router.get("/", (req, res) => {
 });
 
 // GET 1
-router.get("/:id/:isMetro", (req, res) => {
-  Metro.find({ id: req.params.id, isMetro: req.params.isMetro }).exec(
+router.get("/:id/:stdType", (req, res) => {
+  Metro.find({ id: req.params.id, stdType: req.params.stdType }).exec(
     (err, data) => {
       if (err) return res.status(400).send(err);
       const isMetro = data[0].isMetro;
