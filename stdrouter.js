@@ -23,7 +23,7 @@ router.get("/:id/:stdType", (req, res) => {
   } else {
     CCC.find({ id: req.params.id }).exec((err, data) => {
       if (err) return res.status(400).send(err);
-      res.json({ response: data[0] });
+      res.status(200).send(data);
     });
   }
 });

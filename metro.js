@@ -12,12 +12,15 @@ const metroSchema = mongoose.Schema(
     isChoose: {
       type: Boolean,
     },
+    class: {
+      type: String,
+    },
+    room: {
+      type: String,
+    },
     date: {
       type: Date,
       default: Date.now,
-    },
-    score: {
-      type: Number,
     },
     stdType: {
       type: String,
