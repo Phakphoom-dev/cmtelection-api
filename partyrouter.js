@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const Party = require("./party");
+const Metro = require("./metro");
+const CCC = require("./ccc");
 
 // GET all
 router.get("/", (req, res) => {
@@ -10,7 +12,6 @@ router.get("/", (req, res) => {
   });
 });
 
-// POST (create new data)
 router.post("/", (req, res) => {
   const obj = new Party(req.body);
   obj.save((err, data) => {
@@ -20,11 +21,28 @@ router.post("/", (req, res) => {
 });
 
 // PUT (update current data)
-router.put("/:_id", (req, res) => {
-  Party.findByIdAndUpdate(req.params._id, req.body, (err, data) => {
-    if (err) return res.status(400).send(err);
-    res.status(200).send("อัพเดทข้อมูลเรียบร้อย");
-  });
+router.put("/:partyId/:_id/:stdType/:score", (req, res) => {
+  const { partyId, _id, stdType } = req.params;
+  let updateScore = +req.params.score;
+  console.log(typeof updateScore);
+  if (stdType === "C") {
+    CCC.findOneAndUpdate({ _id: _id }, { isChoose: true }, (err, data) => {
+      if (err) return res.status(400).send(err);
+    });
+  } else {
+    Metro.findOneAndUpdate({ _id: _id }, { isChoose: true }, (err, data) => {
+      if (err) return res.status(400).send(err);
+    });
+  }
+
+  Party.findOneAndUpdate(
+    { _id: partyId },
+    { score: updateScore + 1 },
+    (err, data) => {
+      if (err) return res.status(400).send(err);
+      res.status(200).send("อัพเดทข้อมูลเรียบร้อย");
+    }
+  );
 });
 
 // DELETE (delete 1 data)

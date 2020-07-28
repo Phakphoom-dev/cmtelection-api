@@ -13,7 +13,6 @@ router.get("/", (req, res) => {
 
 // GET 1
 router.get("/:id/:stdType", (req, res) => {
-  console.log(req.params.stdType);
   const stdType = req.params.stdType;
   if (stdType === "M") {
     Metro.find({ id: req.params.id }).exec((err, data) => {
