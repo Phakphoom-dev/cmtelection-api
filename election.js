@@ -11,6 +11,9 @@ const scoreSchema = mongoose.Schema(
     score: {
       type: Number,
     },
+    image: {
+      type: String,
+    },
   },
   {
     collection: "SCORE",

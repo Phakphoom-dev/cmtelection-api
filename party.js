@@ -12,6 +12,9 @@ const partySchema = mongoose.Schema(
     score: {
       type: Number,
     },
+    img: {
+      type: String,
+    },
   },
   {
     collection: "Party",
